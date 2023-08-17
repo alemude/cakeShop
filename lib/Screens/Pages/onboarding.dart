@@ -1,15 +1,15 @@
-import 'package:cakeshop/UserInterface/CommonWidgets/cakeSlider.dart';
-import 'package:cakeshop/UserInterface/CommonWidgets/image.dart';
+import 'package:cakeshop/Widgets/cakeSlider.dart';
+import 'package:cakeshop/Widgets/image.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,23 +24,6 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color.fromARGB(255, 69, 46, 131),
           foregroundColor: Colors.white,
           centerTitle: true,
-          actions:const [
-Column(children:[
-                Padding(
-                  padding: EdgeInsets.only(top:5,left:5),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius:10,
-                    child:Text('0')
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top:1,
-                  right:15),
-                  child: Icon(Icons.shopping_cart),
-                ),
-              ] ),
-          ],
         ),
       body:ListView(
           padding: const EdgeInsets.only(left: 15),
@@ -48,52 +31,6 @@ Column(children:[
           children: <Widget>[
             const SizedBox(
               height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  'Welcome,Alemu',
-                  style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 18, 17, 17),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15,right:15),
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/f9.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 17,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 45),
-              child: SizedBox(
-                child: Text(
-                  'choise the cake that you want',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'nunito',
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
             ),
             const SizedBox(
               height: 25,

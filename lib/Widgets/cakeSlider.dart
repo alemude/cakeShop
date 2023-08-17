@@ -1,4 +1,4 @@
-import 'package:cakeshop/UserInterface/Pages/addToCart.dart';
+import 'package:cakeshop/Screens/Pages/addToCart.dart';
 import 'package:flutter/material.dart';
 
 cakeSlider(String imgPath, String name,String price, bool isFavourite) {

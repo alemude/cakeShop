@@ -1,6 +1,11 @@
-import 'package:cakeshop/UserInterface/Pages/homePage.dart';
-import 'package:cakeshop/UserInterface/Pages/onboarding.dart';
+import 'package:cakeshop/Provider/appState.dart';
+import 'package:cakeshop/Screens/Pages/addToCart.dart';
+import 'package:cakeshop/Screens/Pages/cartScreen.dart';
+import 'package:cakeshop/Screens/Pages/homePage.dart';
+import 'package:cakeshop/Screens/Pages/onboarding.dart';
+import 'package:cakeshop/Screens/Pages/product.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 void main(){
@@ -11,11 +16,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return ChangeNotifierProvider(
+      create: (_)=>Cart(),
+      child:     MaterialApp(
       debugShowCheckedModeBanner: false,
   
       //home:OnBoardingPage()
-      home:HomePage()
-    );
+      //home:HomePage()
+      //home: AddToCartPage(),
+      initialRoute: '/',
+      routes: {
+        '/':(context) => ProductScreen(),
+        '/cart':(context) => CartScreen(),
+      },
+    ),
+      );
   }
 }
