@@ -1,3 +1,4 @@
+import 'package:cakeshop/UserInterface/Pages/addToCart.dart';
 import 'package:flutter/material.dart';
 
 cakeSlider(String imgPath, String name,String price, bool isFavourite) {
@@ -93,6 +94,8 @@ cakeSlider(String imgPath, String name,String price, bool isFavourite) {
                 ),
                 InkWell(
                   onTap: () {
+                    // Navigator.push(context,
+                    //  MaterialPageRoute(builder: (context) => const AddToCartPage()));
                   },
                   child: Container(
                     height: 50,

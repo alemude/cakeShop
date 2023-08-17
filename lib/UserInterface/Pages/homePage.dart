@@ -24,6 +24,23 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color.fromARGB(255, 69, 46, 131),
           foregroundColor: Colors.white,
           centerTitle: true,
+          actions:const [
+Column(children:[
+                Padding(
+                  padding: EdgeInsets.only(top:5,left:5),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius:10,
+                    child:Text('0')
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top:1,
+                  right:15),
+                  child: Icon(Icons.shopping_cart),
+                ),
+              ] ),
+          ],
         ),
       body:ListView(
           padding: const EdgeInsets.only(left: 15),
@@ -33,18 +50,20 @@ class _HomePageState extends State<HomePage> {
               height: 20,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
                   'Welcome,Alemu',
                   style: TextStyle(
                     fontFamily: 'varela',
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 18, 17, 17),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 15,right:15),
                   child: Container(
                     height: 40,
                     width: 40,
