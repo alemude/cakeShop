@@ -1,6 +1,4 @@
-import 'package:cakeshop/Screens/Pages/addToCart.dart';
 import 'package:flutter/material.dart';
-
 cakeSlider(String imgPath, String name,String price, bool isFavourite) {
     return Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),

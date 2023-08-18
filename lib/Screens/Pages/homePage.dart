@@ -1,236 +1,240 @@
-import 'package:cakeshop/Widgets/homeSlide.dart';
-import 'package:cakeshop/Widgets/image.dart';
-import 'package:cakeshop/Screens/Pages/addToCart.dart';
+import 'package:cakeshop/Provider/appState.dart';
+import 'package:cakeshop/Screens/cart/cart.dart';
+import 'package:cakeshop/Screens/cart/cartCounter.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+   HomePage(
+      {Key? key, screenSize, image,itemName})
+      : super(key: key);
+
+   Size? screenSize;
+   String? image, itemName;
+  
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
+  int quantity = 1;
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      quantity++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      _counter--;
+      quantity--;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 150, 144, 144),
-        appBar: AppBar(
-          title: const Text(
-            'Cake Shop',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Color.fromARGB(255, 69, 46, 131),
-          foregroundColor: Colors.white,
-          centerTitle: true,
-          actions: const [
-            Column(children: [
-              Padding(
-                padding: EdgeInsets.only(top: 5, left: 5),
-                child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 10,
-                    child: Text('0')),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 1, right: 15),
-                child: Icon(Icons.shopping_cart),
-              ),
-            ]),
-          ],
-        ),
-        body: ListView(
-          padding: const EdgeInsets.only(left: 15),
-          shrinkWrap: true,
-          children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  'Welcome,Alemu',
-                  style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 18, 17, 17),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/f9.jpg'),
-                        fit: BoxFit.cover,
+        backgroundColor: const Color.fromARGB(255, 150, 144, 144),
+ appBar: AppBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 50,
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+            },
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 0, right: 15, top: 8, bottom: 8),
+              child: Stack(
+                children: [
+                  const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Icon(Icons.shopping_cart_rounded,
+                          color: Colors.blue, size: 25)),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    child: Consumer<ProductsVM>(
+                      builder: (context, value, child) => CartCounter(
+                        count: value.lst.length.toString(),
                       ),
                     ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+      
+        body: Container(
+          child: ListView(
+            padding: const EdgeInsets.only(left: 15),
+            shrinkWrap: true,
+            children: <Widget>[
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Welcome,Alemu',
+                    style: TextStyle(
+                      fontFamily: 'varela',
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 18, 17, 17),
+                    ),
                   ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 17,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 45),
-              child: SizedBox(
-                child: Text(
-                  'choise the cake that you want',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'nunito',
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/user.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 17,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 45),
+                child: SizedBox(
+                  child: Text(
+                    'choise the cake that you want',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'nunito',
+                      fontSize: 17,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Our specials',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 21, 21, 20),
-                    fontFamily: 'valera',
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 15),
-                  child: Text(
-                    'See all',
+              const SizedBox(
+                height: 25,
+              ),
+                  const Text(
+                    'Our specials',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 59, 58, 58),
-                      fontFamily: 'nunito',
+                      color: Color.fromARGB(255, 21, 21, 20),
+                      fontFamily: 'valera',
                       fontSize: 17,
-                      fontWeight: FontWeight.w200,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 400,
-              child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    HomeSlider(
-                        'assets/images/f8.jpg',
-                        'Cake 001',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '2000 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f6.jpg',
-                        'Cake 002',
-                        '2',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1500 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f10.jpg',
-                        'Cake 003',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1300 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f5.jpg',
-                        'Cake 004',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1190 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f7.jpg',
-                        'Cake 005',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1500 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f2.jpg',
-                        'Cake 006',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1600 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f1.jpg',
-                        'Cake 007',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1400 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f8.jpg',
-                        'Cake 008',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1000 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f9.jpg',
-                        'Cake 009',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '900 birr',
-                        '$_counter',
-                        false),
-                    HomeSlider(
-                        'assets/images/f10.jpg',
-                        'Cake 010',
-                        '1',
-                        'This the the best teste cake that you have not purchase yet',
-                        '1200 birr',
-                        '$_counter',
-                        false),
-                  ]),
-            ),
-          ],
+               
+              const SizedBox(
+                height: 15,
+              ),
+              SizedBox(
+                height: 400,
+                child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      HomeSlider(
+                          'assets/images/f8.jpg',
+                          'Cake 001',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '2000 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f6.jpg',
+                          'Cake 002',
+                          '2',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1500 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f10.jpg',
+                          'Cake 003',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1300 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f5.jpg',
+                          'Cake 004',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1190 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f7.jpg',
+                          'Cake 005',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1500 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f2.jpg',
+                          'Cake 006',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1600 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f1.jpg',
+                          'Cake 007',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1400 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f8.jpg',
+                          'Cake 008',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1000 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f9.jpg',
+                          'Cake 009',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '900 birr',
+                          '$quantity',
+                          false),
+                      HomeSlider(
+                          'assets/images/f10.jpg',
+                          'Cake 010',
+                          '1',
+                          'This is the best teste cake that you have not purchase yet',
+                          '1200 birr',
+                          '$quantity',
+                          false),
+                    ]),
+              ),
+            ],
+          ),
         ));
   }
 
-  HomeSlider(String imgPath, String name, String quantity, String description,
+  HomeSlider(String image, String itemName, String quantity, String description,
       String price, String count, bool isFavourite) {
+    var screenSize= MediaQuery.of(context).size;
     return Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: SizedBox(
@@ -254,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                         width: 225,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: Color.fromARGB(255, 252, 250, 250),
+                          color: const Color.fromARGB(255, 252, 250, 250),
                         ),
                       ),
                     ),
@@ -267,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                image: AssetImage(imgPath),
+                                image: AssetImage(image),
                                 fit: BoxFit.cover,
                               ),
                             ))),
@@ -275,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                       top: 180,
                       left: 60,
                       child: Text(
-                        name,
+                        itemName,
                         style: const TextStyle(
                           color: Color.fromARGB(255, 17, 1, 1),
                           fontFamily: 'varela',
@@ -287,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                     Positioned(
                       top: 220,
                       child: Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         width: 220,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -310,20 +314,20 @@ class _HomePageState extends State<HomePage> {
                                   width: 25,
                                   child: FloatingActionButton(
                                       backgroundColor:
-                                          Color.fromARGB(255, 26, 5, 83),
+                                          const Color.fromARGB(255, 26, 5, 83),
                                       onPressed: _decrementCounter,
                                       tooltip: 'Decrement',
-                                      child: Icon(Icons.remove),
+                                      child: const Icon(Icons.remove),
                                       mini: true,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10))),
+                                              BorderRadius.circular(5))),
                                 ),
                                 const SizedBox(
                                   width:15,
                                 ),
                                 Text(
-                                  count,
+                                  quantity,
                                   style: const TextStyle(fontSize: 15),
                                 ),
                                   const SizedBox(
@@ -335,13 +339,13 @@ class _HomePageState extends State<HomePage> {
                                   child: FloatingActionButton(
                                       onPressed: _incrementCounter,
                                       backgroundColor:
-                                          Color.fromARGB(255, 26, 5, 83),
+                                          const Color.fromARGB(255, 26, 5, 83),
                                       tooltip: 'Increment',
-                                      child: Icon(Icons.add),
+                                      child: const Icon(Icons.add),
                                       mini: true,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10))),
+                                              BorderRadius.circular(5))),
                                 ),
                               ],
                             ),
@@ -351,12 +355,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Positioned(
                         top: 250,
-                        child: SizedBox(
-                          width: 200,
-                          child: Text(
-                            description,
-                            style: const TextStyle(
-                              fontSize: 12,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:8.0,right: 8.0),
+                          child: SizedBox(
+                            width: 200,
+                            child: Text(
+                              description,
+                              style: const TextStyle(
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         )),
@@ -391,32 +398,35 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Positioned(
+                      left:50,
                       top: 350,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => const AddToCartPage()));
-                        },
-                        child: Container(
-                          height: 50,
-                          width: 225,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromARGB(255, 31, 20, 91),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              'Order Now',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'valera',
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                      child: Consumer<ProductsVM>(
+            builder: (context, value, child) => InkWell(
+              onTap: () {
+                value.add(image, itemName);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(
+                  alignment: Alignment.center,
+                    height: screenSize.height * 0.04,
+                    width: screenSize.width * 0.3,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blue),
+                    child: const Center(
+                      child: Text(
+                        "Add to cart",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
+                    )),
+              ),
+            ),
+          ),
                     ),
                   ],
                 ),
@@ -424,3 +434,4 @@ class _HomePageState extends State<HomePage> {
             )));
   }
 }
+

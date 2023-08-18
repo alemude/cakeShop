@@ -1,6 +1,13 @@
 class CartItem{
-  final String name;
-  final double price;
+   String name;
+   double price;
   int quantiry;
-CartItem({required this.name,required this.price,required this.quantiry});
+  String image;
+CartItem({required this.name,
+required this.price,required this.quantiry,
+ required this.image, required Null Function() del});
+ Map<String, dynamic> toJson() => {
+        "name": name,
+        "image": image,
+      };
 }

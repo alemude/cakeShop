@@ -1,5 +1,3 @@
-import 'package:cakeshop/Screens/Pages/addToCart.dart';
-import 'package:cakeshop/Screens/Pages/homePage.dart';
 import 'package:flutter/material.dart';
 
 HomeSlider(String imgPath, String name, int quantity, String description,

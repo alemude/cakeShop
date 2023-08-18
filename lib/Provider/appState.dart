@@ -1,26 +1,16 @@
-import 'package:cakeshop/Provider/cart.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-class Cart with ChangeNotifier{
-  late List<CartItem> _items =[];
-  List<CartItem> get items=>_items;
-  double get total =>_items.fold(0,(sum,item)=>sum+item.price*item.quantiry);
-  void addItem(CartItem item){
-    final existingItem =_items.firstWhere((i) => i.name==item.name,orElse: ()=>CartItem(name: '', price: 0.0, quantiry: 0));
-    if(existingItem!=CartItem(name: '', price: 0.0, quantiry: 0)){
-      existingItem.quantiry++;
-    }
-    else{
-      _items.add(item);
-    }
+import 'package:flutter/widgets.dart';
+import 'package:cakeshop/model/productModel.dart';
+
+class ProductsVM with ChangeNotifier {
+  List<Products> lst = <Products>[];
+
+  add(String image, String name) {
+    lst.add(Products(image: image, name: name));
     notifyListeners();
   }
-void removeItem(CartItem item){
-_items.remove(item);
- notifyListeners();
-}
-void clear(){
-  _items=[];
-  notifyListeners();
-}
+
+  del(int index) {
+    lst.removeAt(index);
+    notifyListeners();
+  }
 }
