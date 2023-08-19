@@ -34,7 +34,9 @@ class _CartScreenState extends State<CartScreen> {
                     screenSize: screenSize,
                     image: value.lst[index].image,
                     itemName: value.lst[index].name,
-                     del: (){}, price: '1', quantity: '',
+                    price: value.lst[index].price,
+                    quantity: value.lst[index].quantity,
+                     del: (){},
                   ),
                 );
               },

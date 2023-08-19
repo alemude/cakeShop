@@ -1,3 +1,4 @@
+import 'package:cakeshop/Screens/Pages/account.dart';
 import 'package:cakeshop/Screens/Pages/homePage.dart';
 import 'package:cakeshop/Screens/Pages/onboarding.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ Widget build(BuildContext context) {
 	return MaterialApp(
 	title: 'Bottom NavBar Demo',
 	theme: ThemeData(
-		primaryColor: Color(0xFF2F8D46),
+		primaryColor: const Color(0xFF2F8D46),
 		splashColor: Colors.transparent,
 		highlightColor: Colors.transparent,
 		hoverColor: Colors.transparent,
@@ -34,10 +35,9 @@ class _PagesState extends State<Pages> {
 int pageIndex = 0;
 
 final pages = [
-	const OnBoardingPage(),
+	OnBoardingPage(),
 	HomePage(),
-	const Page3(),
-	const Page4(),
+	const Account(),
 ];
 
 @override
@@ -46,7 +46,7 @@ Widget build(BuildContext context) {
 	backgroundColor: const Color(0xffC4DFCB),
 	appBar: AppBar(
     backgroundColor:Theme.of(context).primaryColor,
-		title: Text(
+		title: const Text(
 		"Cake Shope",
 		style: TextStyle( 
 			color: Colors.white,
@@ -176,82 +176,7 @@ Container buildMyNavBar(BuildContext context) {
           ),
           ]
         ),
-		Stack(
-          children: [Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(50),
-          border:Border.all(
-            color:Colors.black,
-            width: 3,
-            )
-        ),
-          ),
-          IconButton(
-              enableFeedback: false,
-              onPressed: () {
-              setState(() {
-                pageIndex = 3;
-              });
-              },
-              icon: pageIndex == 3
-                ? const Icon(
-                  Icons.settings,
-                  color: Colors.blue,
-                  size: 35,
-                )
-                : const Icon(
-                  Icons.settings,
-                  color: Colors.black,
-                  size: 35,
-                ),
-          ),
-          ]
-        ),
 		],
-	),
-	);
-}
-}
-class Page3 extends StatelessWidget {
-const Page3({Key? key}) : super(key: key);
-
-@override
-Widget build(BuildContext context) {
-	return Container(
-	color: const Color(0xffC4DFCB),
-	child: Center(
-		child: Text(
-		"Page Number 3",
-		style: TextStyle(
-			color: Colors.green[900],
-			fontSize: 45,
-			fontWeight: FontWeight.w500,
-		),
-		),
-	),
-	);
-}
-}
-
-class Page4 extends StatelessWidget {
-const Page4({Key? key}) : super(key: key);
-
-@override
-Widget build(BuildContext context) {
-	return Container(
-	color: const Color(0xffC4DFCB),
-	child: Center(
-		child: Text(
-		"Page Number 4",
-		style: TextStyle(
-			color: Colors.green[900],
-			fontSize: 45,
-			fontWeight: FontWeight.w500,
-		),
-		),
 	),
 	);
 }

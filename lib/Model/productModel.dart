@@ -2,14 +2,14 @@ class Products {
   Products({
    required this.name,
     required this.image, 
-    required String quantity,
-     required String price, 
+    required this.quantity,
+     required this.price, 
   });
 
   String name;
   String image;
-  String? price;
-  String? quantity;
+  String price;
+  String quantity;
   Map<String, dynamic> toJson() => {
         "name": name,
         "image": image,

@@ -7,15 +7,13 @@ class CartItem extends StatelessWidget {
       : super(key: key);
 
   final Size screenSize;
-  final String image, itemName;
-  final String price;
-  final String quantity;
+  final String? image, itemName,price,quantity;
   final Function del;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: screenSize.height * 0.15,
       width: screenSize.width,
       decoration: BoxDecoration(
@@ -24,7 +22,7 @@ class CartItem extends StatelessWidget {
           boxShadow: [
             BoxShadow(
                 color: Colors.blue[200]!.withOpacity(0.3),
-                offset: Offset(0, 0),
+                offset: const Offset(0, 0),
                 blurRadius: 3,
                 spreadRadius: 3)
           ]),
@@ -36,7 +34,7 @@ class CartItem extends StatelessWidget {
             width: screenSize.width * 0.3,
             fit: BoxFit.cover,
             placeholder: (context, url) =>
-                Center(child: CircularProgressIndicator()),
+                const Center(child: CircularProgressIndicator()),
             imageUrl: image ?? 'https://picsum.photos/250?image=9',
           ),
         ),
@@ -44,29 +42,41 @@ class CartItem extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Text(
-                itemName ?? "Item",
-                style: TextStyle(fontSize: 22),
+              child: Text('Name: ${
+                itemName ?? "Item"}',
+                style: const TextStyle(fontSize:15,
+                color: Colors.green,
+                fontWeight: FontWeight.bold,),
               ),
             ),
                     Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Text(
-            '${price}',
-            style: TextStyle(fontSize: 22),
-          ),
+          child: Text('Price: ${
+                price ?? "price"}',
+                style: const TextStyle(fontSize:18,
+                color: Color.fromARGB(255, 223, 121, 5),
+                fontWeight: FontWeight.bold,),
+              ),
           
         ),
                 Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Text(
-            '${quantity}',
-            style: TextStyle(fontSize: 22),
-          ),
+          child: Text('Quantity: ${
+                quantity ?? "quantity"}',
+                style: const TextStyle(fontSize: 15,
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+                ),
+              ),
         ),
           ],
         ),
-
+IconButton(onPressed: (){
+},
+ icon: const Icon(Icons.delete,
+ color:Colors.red,
+ size:20,
+ ))
       ]),
     );
   }

@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 class HomePage extends StatefulWidget {
    HomePage(
-      {Key? key, screenSize, image,itemName})
+      {Key? key, screenSize, image,itemName,price,quantity})
       : super(key: key);
 
    Size? screenSize;
-   String? image, itemName;
+   String? image, itemName,price,quantity;
   
 
   @override
@@ -17,18 +17,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int quantity = 1;
+  int count = 1;
+  int _rating = 0;
   void _incrementCounter() {
     setState(() {
-      quantity++;
+      count++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      quantity--;
+      count--;
     });
   }
+
+ void _setRatingAsOne() {
+ setState( () {
+ _rating = 1;
+ });
+ }
+ void _setRatingAsTwo() {
+ setState( () {
+ _rating = 2;
+ });
+ }
+ void _setRatingAsThree() {
+ setState( () {
+ _rating = 3;
+ });
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '2000 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f6.jpg',
@@ -159,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                           '2',
                           'This is the best teste cake that you have not purchase yet',
                           '1500 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f10.jpg',
@@ -167,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1300 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f5.jpg',
@@ -175,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1190 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f7.jpg',
@@ -183,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1500 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f2.jpg',
@@ -191,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1600 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f1.jpg',
@@ -199,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1400 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f8.jpg',
@@ -207,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1000 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f9.jpg',
@@ -215,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '900 birr',
-                          '$quantity',
+                          '$count',
                           false),
                       HomeSlider(
                           'assets/images/f10.jpg',
@@ -223,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                           '1',
                           'This is the best teste cake that you have not purchase yet',
                           '1200 birr',
-                          '$quantity',
+                          '$count',
                           false),
                     ]),
               ),
@@ -367,43 +384,53 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         )),
-                    const Positioned(
+                     Positioned(
                       top: 300,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 23, right: 23),
-                            child: Icon(
-                              Icons.star_border,
-                              color: Color.fromARGB(255, 218, 171, 19),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 23, right: 23),
-                            child: Icon(
-                              Icons.star_border,
-                              color: Color.fromARGB(255, 218, 171, 19),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 23, right: 23),
-                            child: Icon(
-                              Icons.star_border,
-                              color: Color.fromARGB(255, 218, 171, 19),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                              mainAxisAlignment: MainAxisAlignment.end,
+ crossAxisAlignment: CrossAxisAlignment.end,
+ mainAxisSize: MainAxisSize.max,
+ children: <Widget>[
+ Container(
+ padding: EdgeInsets.only(left:15,right:15),
+ child: IconButton(
+ icon: (_rating >= 1 ? Icon(Icons.star, size: 20,) : 
+Icon(Icons.star_border, size: 20,)),
+ color: Colors.red[500],
+ onPressed: _setRatingAsOne,
+ iconSize: 20,
+ ),
+ ),
+ Container(
+ padding: EdgeInsets.only(left:15,right:15),
+ child: IconButton(
+ icon: (_rating >= 2 ? Icon(Icons.star, size: 20,) : 
+Icon(Icons.star_border, size: 20,)),
+ color: Colors.red[500],
+ onPressed: _setRatingAsTwo,
+ iconSize: 20,
+ ),
+ ),
+ Container(
+ padding: EdgeInsets.only(left:15,right:15),
+ child: IconButton(
+ icon: (_rating >= 3 ? Icon(Icons.star, size: 20,) : 
+Icon(Icons.star_border, size: 20,)),
+color: Colors.red[500],
+ onPressed: _setRatingAsThree,
+ iconSize: 20,
+ ),
+ ),
+ ],
+ ),                 
+    ),
                     Positioned(
                       left:50,
                       top: 350,
                       child: Consumer<ProductsVM>(
             builder: (context, value, child) => InkWell(
               onTap: () {
-                value.add(image, itemName);
+                value.add(image, itemName,price,quantity);
               },
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
