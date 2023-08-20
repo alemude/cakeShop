@@ -1,19 +1,17 @@
 import 'package:cakeshop/Screens/Pages/account.dart';
 import 'package:cakeshop/Screens/Pages/homePage.dart';
-import 'package:cakeshop/Screens/Pages/onboarding.dart';
+import 'package:cakeshop/Screens/Pages/setting.dart';
 import 'package:flutter/material.dart';
 
 
 class BottomPages extends StatelessWidget {
 const BottomPages({Key? key}) : super(key: key);
-
-// This widget is the root of your application.
 @override
 Widget build(BuildContext context) {
 	return MaterialApp(
-	title: 'Bottom NavBar Demo',
+	title: 'versavvy',
 	theme: ThemeData(
-		primaryColor: const Color(0xFF2F8D46),
+		primaryColor: Colors.white,
 		splashColor: Colors.transparent,
 		highlightColor: Colors.transparent,
 		hoverColor: Colors.transparent,
@@ -35,28 +33,16 @@ class _PagesState extends State<Pages> {
 int pageIndex = 0;
 
 final pages = [
-	OnBoardingPage(),
 	HomePage(),
 	const Account(),
+  const Settings(),
 ];
 
 @override
 Widget build(BuildContext context) {
 	return Scaffold(
 	backgroundColor: const Color(0xffC4DFCB),
-	appBar: AppBar(
-    backgroundColor:Theme.of(context).primaryColor,
-		title: const Text(
-		"Cake Shope",
-		style: TextStyle( 
-			color: Colors.white,
-			fontSize: 25,
-			fontWeight: FontWeight.w600,
-		),
-		),
-		centerTitle: true,
-	),
-	body: pages[pageIndex],
+ body: pages[pageIndex],
 	bottomNavigationBar: buildMyNavBar(context),
 	);
 }
@@ -130,12 +116,12 @@ Container buildMyNavBar(BuildContext context) {
               },
               icon: pageIndex == 1
                 ? const Icon(
-                  Icons.home_filled,
+                  Icons.copy,
                   color: Colors.blue,
                   size: 35,
                 )
                 : const Icon(
-                  Icons.home_outlined,
+                  Icons.copy,
                   color: Colors.black,
                   size: 35,
                 ),
@@ -164,12 +150,12 @@ Container buildMyNavBar(BuildContext context) {
               },
               icon: pageIndex == 2
                 ? const Icon(
-                  Icons.person_outlined,
+                  Icons.settings,
                   color: Colors.blue,
                   size: 35,
                 )
                 : const Icon(
-                  Icons.person_outlined,
+                  Icons.settings,
                   color: Colors.black,
                   size: 35,
                 ),
@@ -181,3 +167,5 @@ Container buildMyNavBar(BuildContext context) {
 	);
 }
 }
+
+

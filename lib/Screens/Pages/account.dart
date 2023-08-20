@@ -8,7 +8,7 @@ class Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffC4DFCB),
+      backgroundColor: const Color.fromARGB(232, 214, 219, 221),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8.0),
@@ -21,13 +21,8 @@ class Account extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    child: Container(
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                      image: AssetImage("assets/images/user.png"),
-                      fit: BoxFit.cover,
-                    ))),
-                  ),
+                    child:ClipOval(child: Image.asset('assets/images/user.png'))
+                    ),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -100,30 +95,7 @@ class Account extends StatelessWidget {
                   ],
                 ),
               ),
-             const SizedBox(height: 24),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UpdateProfile()));
-                },
-                child: const Row(
-                  children: [
-                    Icon(Icons.support,
-                        size: 20, color: Colors.blue),
-                    Text(
-                      'Contact us',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-             ],
+],
           ),
         ),
       ),

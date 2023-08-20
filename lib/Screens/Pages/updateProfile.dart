@@ -188,7 +188,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     prefixIcon: Icon(Icons.phone),
                     contentPadding: EdgeInsets.all(16),
                     labelText: 'Phone Number'),
-                  obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your phone number';
