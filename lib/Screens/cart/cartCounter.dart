@@ -17,7 +17,7 @@ class CartCounter extends StatelessWidget {
         child: Center(
             child: Text(
           count ?? "0",
-          style: TextStyle(color: Colors.white, fontSize: 7),
+          style: const TextStyle(color: Colors.white, fontSize: 7),
         )));
   }
 }

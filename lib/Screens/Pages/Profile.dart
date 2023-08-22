@@ -5,20 +5,17 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Padding(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircleAvatar(
-              radius: 100,
-              child: ClipOval(child: Image.asset('assets/images/user.png'))),
-          const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+    return const Material(
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage("assets/images/user.png")),
               ListTile(
                 leading: Icon(Icons.person),
                 title: Text('Name',
@@ -34,22 +31,25 @@ class Profile extends StatelessWidget {
                       color: Colors.black,
                     )),
               ),
-              ListTile(
-                leading: Icon(Icons.email),
-                title: Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black38,
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Icon(Icons.email),
+                  title: Text(
+                    'Email',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black38,
+                    ),
                   ),
-                ),
-                subtitle: Text(
-                  'alemuofficial@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black38,
+                  subtitle: Text(
+                    'alemuofficial@gmail.com',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black38,
+                    ),
                   ),
                 ),
               ),
@@ -74,7 +74,7 @@ class Profile extends StatelessWidget {
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

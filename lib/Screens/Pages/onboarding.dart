@@ -5,7 +5,6 @@ class OnBoardingScreen extends StatelessWidget {
   final String title;
   final String subtitle;
   final String image;
-
   const OnBoardingScreen({
     Key? key,
     required this.title,
@@ -34,12 +33,12 @@ class OnBoardingScreen extends StatelessWidget {
           const SizedBox(height: 30.0),
           Text(
             title,
-            style:Theme.of(context).textTheme.displayLarge,
+            style: Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(height: 20.0),
           Text(
             subtitle,
-            style:Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(
             height: 150,
@@ -93,11 +92,11 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
             ],
           ),
           Positioned(
-            left: 16.0,
-            right: 16.0,
-            bottom: 100.0,
+            left: 0,
+            right: 0,
+            bottom: 16.0,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 if (_currentPage != 2)
                   TextButton(
@@ -108,24 +107,22 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
                             builder: (context) => const BottomPages()),
                       );
                     },
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 20.0),
-                      child: Text('SKIP',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            height: 2,
-                            color: Colors.black,
-                          )),
-                    ),
+                    child: const Text('SKIP',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          height: 2,
+                          color: Colors.black,
+                        )),
                   ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     for (int i = 0; i < 3; i++)
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                        width: _currentPage == i ? 16.0 : 8.0,
-                        height: 8.0,
+                        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                        width: _currentPage == i ? 20.0 : 10.0,
+                        height: 18.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _currentPage == i
@@ -133,32 +130,31 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
                               : Colors.grey[400],
                         ),
                       ),
-                    const SizedBox(width: 8.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 90, right: 20),
-                      child: InkWell(
-                        onTap: () {
-                          if (_currentPage == 2) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const BottomPages()),
-                            );
-                          } else {
-                            _pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          }
-                        },
-                        child: Text(_currentPage == 2 ? 'GET STARTED' : 'NEXT',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                              height: 2,
-                              color: Colors.blue,
-                            )),
-                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.15,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (_currentPage == 2) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BottomPages()),
+                          );
+                        } else {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.ease,
+                          );
+                        }
+                      },
+                      child: Text(_currentPage == 2 ? 'GET STARTED' : 'NEXT',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            height: 2,
+                            color: Colors.blue,
+                          )),
                     ),
                   ],
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UpdatePassword extends StatefulWidget {
-  const UpdatePassword ({super.key});
+  const UpdatePassword({super.key});
 
   @override
   State<UpdatePassword> createState() => _UpdatePasswordState();
@@ -9,22 +9,21 @@ class UpdatePassword extends StatefulWidget {
 
 class _UpdatePasswordState extends State<UpdatePassword> {
   final _formKey = GlobalKey<FormState>();
-
   final _oldPasswordController = TextEditingController();
-
   final _newPasswordController = TextEditingController();
-
   final _confirmPasswordController = TextEditingController();
 
   bool _vissible = true;
-
   bool _vissible1 = true;
-
   bool _vissible2 = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        iconTheme: const IconThemeData(color: Colors.blue),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -141,7 +140,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                 width: double.infinity,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 16, 4, 83),
+                      backgroundColor: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -164,7 +163,8 @@ class _UpdatePasswordState extends State<UpdatePassword> {
       ),
     );
   }
-    showAlertDialog(BuildContext context) {
+
+  showAlertDialog(BuildContext context) {
     Widget okButton = ElevatedButton(
       child: const Text("OK"),
       onPressed: () {
