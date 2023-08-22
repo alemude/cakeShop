@@ -25,35 +25,31 @@ class OnBoardingScreen extends StatelessWidget {
             height: 300.0,
             width: double.infinity,
             decoration: BoxDecoration(
-              image:DecorationImage(
+              image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.contain,
-                ),
+              ),
             ),
           ),
           const SizedBox(height: 30.0),
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue,
-            ),
+            style:Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(height: 20.0),
           Text(
             subtitle,
-            style: TextStyle(
-              fontSize: 18.0,
-              color: Colors.grey[600],
-            ),
+            style:Theme.of(context).textTheme.titleLarge,
           ),
-          SizedBox(height: 150,),
+          const SizedBox(
+            height: 150,
+          ),
         ],
       ),
     );
   }
 }
+
 class OnBoaringPage extends StatefulWidget {
   @override
   _OnBoaringPageState createState() => _OnBoaringPageState();
@@ -75,23 +71,26 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
                 _currentPage = page;
               });
             },
-        children: const [
-          OnBoardingScreen(
-            image: 'assets/images/l1.jpg',
-            title: 'CUSTOM YOUR CAKE',
-            subtitle: 'Custome your cake is you like, whenever you want from bread to tapping, Everything',
-          ),
-          OnBoardingScreen(
-             image: 'assets/images/l2.jpg',
-            title: 'ORDER FROM YOUR HOME',
-            subtitle: "Wanna eat some cake while you're on your couch? Order your favorite cake from your home",
-          ),
-          OnBoardingScreen(
-            image: 'assets/images/l3.jpg',
-            title: 'EASE TO USE',
-            subtitle: 'Simple and easy to use. Manage your orders your accounts',
-          ),
-        ],
+            children: const [
+              OnBoardingScreen(
+                image: 'assets/images/l1.jpg',
+                title: 'CUSTOM YOUR CAKE',
+                subtitle:
+                    'Custome your cake is you like, whenever you want from bread to tapping, Everything',
+              ),
+              OnBoardingScreen(
+                image: 'assets/images/l2.jpg',
+                title: 'ORDER FROM YOUR HOME',
+                subtitle:
+                    "Wanna eat some cake while you're on your couch? Order your favorite cake from your home",
+              ),
+              OnBoardingScreen(
+                image: 'assets/images/l3.jpg',
+                title: 'EASE TO USE',
+                subtitle:
+                    'Simple and easy to use. Manage your orders your accounts',
+              ),
+            ],
           ),
           Positioned(
             left: 16.0,
@@ -100,23 +99,24 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-               if (_currentPage != 2)
+                if (_currentPage != 2)
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const BottomPages()),
+                        MaterialPageRoute(
+                            builder: (context) => const BottomPages()),
                       );
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left:20.0),
-                      child: const Text('SKIP',
-                      style:TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        height: 2,
-                        color:Colors.black,
-                      )),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
+                      child: Text('SKIP',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            height: 2,
+                            color: Colors.black,
+                          )),
                     ),
                   ),
                 Row(
@@ -128,19 +128,21 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
                         height: 8.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color:
-                              _currentPage == i ? Colors.blue : Colors.grey[400],
+                          color: _currentPage == i
+                              ? Colors.blue
+                              : Colors.grey[400],
                         ),
                       ),
                     const SizedBox(width: 8.0),
                     Padding(
-                      padding: const EdgeInsets.only(left:90,right:20),
+                      padding: const EdgeInsets.only(left: 90, right: 20),
                       child: InkWell(
                         onTap: () {
                           if (_currentPage == 2) {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const BottomPages()),
+                              MaterialPageRoute(
+                                  builder: (context) => const BottomPages()),
                             );
                           } else {
                             _pageController.nextPage(
@@ -150,13 +152,12 @@ class _OnBoaringPageState extends State<OnBoaringPage> {
                           }
                         },
                         child: Text(_currentPage == 2 ? 'GET STARTED' : 'NEXT',
-                        style:TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        height: 2,
-                        color:Colors.blue,
-                      )
-                        ),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              height: 2,
+                              color: Colors.blue,
+                            )),
                       ),
                     ),
                   ],

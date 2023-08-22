@@ -16,16 +16,22 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'versavvy',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          hintColor: Colors.blueGrey[100],
-          primaryColor: Colors.blue[200],
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-      initialRoute: '/home',
+	title: 'versavvy',
+	theme: ThemeData(
+		primaryColor: Color.fromARGB(197, 172, 168, 168),
+    primaryColorLight: Colors.white,
+   primaryColorDark: const Color.fromARGB(255, 7, 101, 179),
+
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+      titleLarge: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
+      bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+    ),
+	),
+	debugShowCheckedModeBanner: false,
+      initialRoute: '/',
       routes: {
-           '/home':(context)=>OnBoaringPage(),
+           '/':(context)=>OnBoaringPage(),
       },
       ),
     );

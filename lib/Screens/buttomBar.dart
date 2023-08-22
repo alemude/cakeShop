@@ -1,57 +1,35 @@
-import 'package:cakeshop/Screens/Pages/account.dart';
+
 import 'package:cakeshop/Screens/Pages/homePage.dart';
 import 'package:cakeshop/Screens/Pages/setting.dart';
+import 'package:cakeshop/Widgets/sliderAcount.dart';
 import 'package:flutter/material.dart';
 
-
-class BottomPages extends StatelessWidget {
+class BottomPages extends StatefulWidget {
 const BottomPages({Key? key}) : super(key: key);
-@override
-Widget build(BuildContext context) {
-	return MaterialApp(
-	title: 'versavvy',
-	theme: ThemeData(
-		primaryColor: Colors.white,
-		splashColor: Colors.transparent,
-		highlightColor: Colors.transparent,
-		hoverColor: Colors.transparent,
-	),
-	debugShowCheckedModeBanner: false,
-	home: const Pages(),
-	);
-}
-}
-
-class Pages extends StatefulWidget {
-const Pages({Key? key}) : super(key: key);
 
 @override
-_PagesState createState() => _PagesState();
+_BottomPagesState createState() => _BottomPagesState();
 }
-
-class _PagesState extends State<Pages> {
+class _BottomPagesState extends State<BottomPages> {
 int pageIndex = 0;
-
 final pages = [
 	HomePage(),
-	const Account(),
+	const SliderAcount(title: 'Manage Account',),
   const Settings(),
 ];
-
 @override
 Widget build(BuildContext context) {
 	return Scaffold(
-	backgroundColor: const Color(0xffC4DFCB),
+	backgroundColor: Theme.of(context).primaryColorLight,
  body: pages[pageIndex],
 	bottomNavigationBar: buildMyNavBar(context),
 	);
 }
-
 Container buildMyNavBar(BuildContext context) {
 	return Container(
 	height: 60,
 	decoration: BoxDecoration(
-		color: Theme.of(context).primaryColor,
+		color: Theme.of(context).primaryColorLight,
 		borderRadius: const BorderRadius.only(
 		topLeft: Radius.circular(20),
 		topRight: Radius.circular(20),

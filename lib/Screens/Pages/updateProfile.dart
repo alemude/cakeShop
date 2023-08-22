@@ -14,10 +14,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   File? _image;
-  // Country country =Country(
-  //   phoneCode:+251,
-  //   countryCode:ETH,
-  // )
+
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
@@ -31,19 +28,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text(
-          "Cake Shope",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: true,
-      ),
-     
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -264,42 +248,5 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
   }
 }
-// InternationalPhoneNumberInput(
-//   onInputChanged: (PhoneNumber number) {
-//     print(number.phoneNumber); // print the phone number without country code
-//   },
-//   onInputValidated: (bool value) {
-//     print(value); // print whether the input is valid or not
-//   },
-//   selectorConfig: SelectorConfig(
-//     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-//   ),
-//   ignoreBlank: false,
-//   autoValidateMode: AutovalidateMode.always,
-//   selectorTextStyle: TextStyle(color: Colors.black),
-//   formatInput: true,
-//   hintText: 'Phone Number',
-//   initialValue: PhoneNumber(isoCode: 'US'),
-//   textFieldController: TextEditingController(),
-//   inputBorder: OutlineInputBorder(),
-// ),
 
-// phoneNumber = number.phoneNumber;
-//   },
-// ),
-
-// // ...
-
-// String _phoneNumber = '';
-
-// // ...
-
-// RaisedButton(
-//   onPressed: () {
-//     if (_formKey.currentState.validate()) {
-//       // form is valid, do something with _phoneNumber
-//     }
-//   },
-//   child: Text('Submit'),
-// ),
 

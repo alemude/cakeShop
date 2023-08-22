@@ -17,10 +17,4 @@ class ProductsVM with ChangeNotifier {
     lst.removeAt(index);
     notifyListeners();
   }
-    bool isDarkMode = false;
- 
-  void updateTheme(bool isDarkMode) {
-    this.isDarkMode = isDarkMode;
-    notifyListeners();
-  }
 }
