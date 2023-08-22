@@ -1,9 +1,9 @@
 # cakeshop
 
 A new Flutter project.
-![First on boarding page](blob/main/1.jpg)
-![Second on boarding page](blob/main/2.jpg)
-![Third on boarding page](blob/main/1.jpg)
+![First on boarding page](1.jpg)
+![Second on boarding page](2.jpg)
+![Third on boarding page](1.jpg)
 ![Home page which contaiins cart order and cake products](../../git/4.jpg)
 ![Cake products those are added to cart for cheackout](../../git/5.jpg)
 ![user profile](../../git/6.jpg)
