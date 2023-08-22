@@ -1,7 +1,16 @@
 # cakeshop
 
 A new Flutter project.
-
+![First on boarding page](../../git/1.jpg)
+![Second on boarding page](../../git/2.jpg)
+![Third on boarding page](../../git/3.jpg)
+![Home page which contaiins cart order and cake products](../../git/4.jpg)
+![Cake products those are added to cart for cheackout](../../git/5.jpg)
+![user profile](../../git/6.jpg)
+![user magage profile : to change password ,change profile and lo out](../../git/7.jpg)
+![change password that is fully validated](../../git/8.jpg)
+![change profile that is fully validated](../../git/9.jpg)
+![setting page](../../git/10.jpg)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
